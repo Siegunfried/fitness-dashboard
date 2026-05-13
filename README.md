@@ -6,6 +6,12 @@ A desktop fitness tracking dashboard with real-time scoring, calendar view, and 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-lightgrey)
 
+## Screenshots
+
+| Desktop Widget | Daily Detail Card |
+|:---:|:---:|
+| ![Widget](screenshots/outlook.png) | ![Card](screenshots/dailycard.png) |
+
 ## Features
 
 - **Diet Calendar** — Monthly calendar with daily nutrition scores, macro breakdown, and weight tracking
