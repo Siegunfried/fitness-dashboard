@@ -17,11 +17,12 @@ import logging
 import traceback
 from pathlib import Path
 from datetime import datetime, timedelta
-from logging.handlers import RotatingFileHandler
+# (using plain FileHandler for PyInstaller compat)
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+try: sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+except: pass  # noconsole exe
 
 PORT = 17532
 XLSX_PATH = Path.home() / 'Desktop' / 'FitnessDiary.xlsx'
@@ -32,9 +33,7 @@ LOG_PATH = SCRIPT_DIR / 'server.log'
 _logger = logging.getLogger('diet-sync')
 _logger.setLevel(logging.DEBUG)
 
-file_handler = RotatingFileHandler(
-    str(LOG_PATH), maxBytes=256 * 1024, backupCount=7, encoding='utf-8'
-)
+file_handler = logging.FileHandler(str(LOG_PATH), encoding='utf-8')
 file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(logging.Formatter(
     '%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S'
@@ -76,7 +75,7 @@ def _evaluate_grade(composite_rate):
     return '未达标(D)'
 
 
-def _compute_tdee(records, default=2200):
+def _compute_tdee(records, default=2700):
     """Estimate TDEE from recent weight history. Falls back to default."""
     weights = []
     for rec in records.values():
@@ -108,8 +107,8 @@ def load_excel_data():
     wb = openpyxl.load_workbook(XLSX_PATH, data_only=True)
     ws = wb['每日记录']
 
-    height = 175.0
-    tdee = 2200.0
+    height = 187.0
+    tdee = 2700.0
     try:
         profile_ws = wb['个人档案']
         h = profile_ws['B5'].value
@@ -356,7 +355,7 @@ def load_excel_data():
 
     return {
         'profile': {
-            'name': ''  # set your name in Excel 个人档案,
+            'name': '董佳鑫',
             'height': height,
             'tdee': tdee,
             'targets': targets

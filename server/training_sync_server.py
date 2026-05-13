@@ -6,7 +6,8 @@ from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+try: sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+except: pass  # noconsole exe
 PORT = 17533
 DOCX_PATH = Path.home() / 'Desktop' / 'ToDoList.docx'
 SCRIPT_DIR = Path(__file__).resolve().parent
