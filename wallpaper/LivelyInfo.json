@@ -1,0 +1,20 @@
+{
+  "AppVersion": "2.0.7.0",
+  "Title": "Music And Fit Wallpaper V3.0",
+  "Thumbnail": "34znrrtm.4yv.jpg",
+  "Preview": "so2jczk0.ir0.gif",
+  "Desc": "Music sync wallpaper with album art and visualizer",
+  "Author": "",
+  "License": "MIT",
+  "Contact": null,
+  "Type": 1,
+  "FileName": "index.html",
+  "Arguments": "--audio --system-nowplaying",
+  "IsAbsolutePath": false,
+  "Id": null,
+  "Tags": [
+    "music",
+    "visualizer"
+  ],
+  "Version": 0
+}

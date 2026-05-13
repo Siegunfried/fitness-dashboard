@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.log
+server/server.log
+server/training_server.log
+
+# PyInstaller
+widget/build/
+widget/dist/
+widget/*.spec
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal data (DO NOT COMMIT)
+FitnessDiary.xlsx
+ToDoList.docx
+*.xlsx
+*.docx
+!example-data/*.xlsx
+!example-data/*.docx
+widget.log
